@@ -20,7 +20,7 @@ export default function App() {
     setCurrentQ(null);
     setFeedback(null);
     try {
-      const res = await fetch("http://localhost:8000/generate-questions", {
+      const res = await fetch(`${process.env.REACT_APP_API_URL}/generate-questions`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ job, company, count: 5 }),
@@ -84,7 +84,7 @@ export default function App() {
     setFeedbackLoading(true);
     setFeedback(null);
     try {
-      const res = await fetch("http://localhost:8000/get-feedback", {
+      const res = await fetch(`${process.env.REACT_APP_API_URL}/get-feedback`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ question: currentQ.text, answer, job }),
